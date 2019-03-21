@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AFlab2</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var vehicalName='Toyota';
+    
+    function printVehicalNameOuter() {
+        console.log(this.vehicalName);
+    }
+
+
+    var vehical={
+        vehicalName:'Nissan',
+        printVehicalNameInner:function () {
+            return function () {
+                console.log(this.vehicalName);
+            }
+        }
+    };
+    var execute=vehical.printVehicalNameInner().bind(vehical);
+
+    console.log(this);
+    printVehicalNameOuter();
+    execute();
+
+</script>
+
+
+</body>
+</html>
